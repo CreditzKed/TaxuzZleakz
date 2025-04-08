@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Taxuzz Leakzz</title>
   <style>
     * {
@@ -37,6 +37,7 @@
     #startOverlay h1 {
       font-size: 3rem;
       text-shadow: 0 0 20px white;
+      color: white;
       animation: pulse 2s infinite;
     }
 
@@ -123,29 +124,6 @@
       color: white;
       box-shadow: 0 0 30px white;
     }
-
-    .glitch {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("https://media.wired.com/photos/64e8dfe4cedb032afb4ceccd/master/pass/Donald-Trump-Mugshot-Depth-Of-Field-Culture-1621335357.jpg") center/cover no-repeat;
-      background-blend-mode: lighten;
-      animation: glitchAnim 0.5s infinite;
-      z-index: 99999;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    @keyframes glitchAnim {
-      0% { transform: scale(1) translate(0, 0); filter: grayscale(0); opacity: 0.9; }
-      20% { transform: scale(1.01) translate(-5px, 3px); }
-      40% { transform: scale(1.02) translate(3px, -5px); }
-      60% { transform: scale(1.01) translate(2px, 4px); }
-      80% { transform: scale(1.03) translate(-4px, -3px); }
-      100% { transform: scale(1) translate(0, 0); }
-    }
   </style>
 </head>
 <body>
@@ -155,7 +133,6 @@
   </div>
 
   <div class="intro-container" id="intro"></div>
-  <div class="glitch" id="glitchEffect"></div>
 
   <div class="main-content" id="main">
     <div class="title">Taxuzz Leakzz</div>
@@ -174,9 +151,8 @@
   </div>
 
   <!-- Audio -->
-  <audio id="sound1" src="Sega.mp3" loop></audio>
-  <audio id="sound2" src="Again2.mp3" loop></audio>
-  <audio id="plop" src="https://www.myinstants.com/media/sounds/pop-cat.mp3"></audio> <!-- Replace with your own plop sound if needed -->
+  <audio id="sound1" src="Sega.mp3"></audio>
+  <audio id="sound2" src="Again2.mp3"></audio>
 
   <script>
     const imageUrls = [
@@ -186,10 +162,8 @@
 
     const intro = document.getElementById("intro");
     const main = document.getElementById("main");
-    const glitch = document.getElementById("glitchEffect");
     const sound1 = document.getElementById("sound1");
     const sound2 = document.getElementById("sound2");
-    const plop = document.getElementById("plop");
 
     document.getElementById("startOverlay").addEventListener("click", () => {
       document.getElementById("startOverlay").style.opacity = "0";
@@ -200,11 +174,8 @@
     });
 
     function startIntro() {
-      let totalImages = 0;
-
       imageUrls.forEach((url, index) => {
         for (let i = 0; i < 5; i++) {
-          totalImages++;
           const img = document.createElement("img");
           img.src = url;
           img.className = "meme-image";
@@ -213,16 +184,14 @@
           intro.appendChild(img);
 
           setTimeout(() => {
-            plop.currentTime = 0;
-            plop.play();
             img.style.opacity = 1;
             img.style.transform = `translate(${(Math.random() - 0.5) * 500}px, ${(Math.random() - 0.5) * 500}px) scale(1.5)`;
-          }, 200 + index * 300 + i * 120);
+          }, 100 + index * 300 + i * 100);
         }
       });
 
       const trumpImg = document.createElement("img");
-      trumpImg.src = imageUrls[1];
+      trumpImg.src = "https://mygruds.netlify.app/static/media/trump.a99960a0.png";
       trumpImg.className = "meme-image";
       trumpImg.style.zIndex = 9999;
       intro.appendChild(trumpImg);
@@ -230,11 +199,6 @@
       setTimeout(() => {
         trumpImg.classList.add("zoomed");
       }, 3000);
-
-      setTimeout(() => {
-        glitch.style.opacity = 1;
-        setTimeout(() => glitch.style.opacity = 0, 1200); // Flash glitch off
-      }, 5000);
 
       setTimeout(() => {
         intro.classList.add("fade-out");
@@ -253,3 +217,4 @@
   </script>
 </body>
 </html>
+
