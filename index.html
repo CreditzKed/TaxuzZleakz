@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Taxuzz Leakzz</title>
   <style>
-    body {
+    * {
       margin: 0;
-      overflow: hidden;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: "Segoe UI", sans-serif;
       background: black;
       color: white;
+      overflow: hidden;
+    }
+
+    #startOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      flex-direction: column;
+      cursor: pointer;
+      transition: opacity 1s ease;
+    }
+
+    #startOverlay h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 20px white;
+      color: white;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px white; }
+      50% { text-shadow: 0 0 30px white; }
+      100% { text-shadow: 0 0 10px white; }
     }
 
     .intro-container {
@@ -22,7 +55,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
       z-index: 999;
       transition: opacity 2s ease;
     }
@@ -35,12 +67,12 @@
       position: absolute;
       width: 200px;
       opacity: 0;
-      transition: transform 2s ease, opacity 2s ease;
-      filter: drop-shadow(0 0 15px #00ffff);
+      transition: transform 2.5s ease, opacity 2s ease;
+      filter: drop-shadow(0 0 20px white);
     }
 
     .zoomed {
-      transform: scale(2);
+      transform: scale(2.5);
       opacity: 1 !important;
       z-index: 1000;
     }
@@ -54,41 +86,50 @@
       height: 100vh;
       padding: 2rem;
       background: black;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .title {
       font-size: 4rem;
       font-weight: bold;
-      color: #00ffff;
-      text-shadow: 0 0 15px #00ffff;
+      background: linear-gradient(90deg, #fff, #aaa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px white;
       margin-bottom: 3rem;
     }
 
     .button {
       font-size: 1.5rem;
       font-weight: bold;
-      color: white;
-      background: #111;
-      border: 2px solid #00ffff;
-      border-radius: 10px;
+      color: black;
+      background: white;
+      border: none;
+      border-radius: 15px;
       padding: 1rem 2rem;
       margin: 1rem;
       cursor: pointer;
-      transition: 0.3s;
-      text-shadow: 0 0 10px #00ffff;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px white;
     }
 
     .button:hover {
-      background: #00ffff;
-      color: black;
+      transform: scale(1.05);
+      background: #222;
+      color: white;
+      box-shadow: 0 0 30px white;
     }
   </style>
 </head>
 <body>
 
-  <div id="startOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:black;display:flex;align-items:center;justify-content:center;z-index:10000;flex-direction:column;">
-    <h1 style="color:#00ffff;font-family:'Segoe UI';font-size:3rem;text-shadow:0 0 10px #00ffff;">Click to Enter</h1>
-    <button onclick="startIntro()" style="padding:1rem 2rem;font-size:1.5rem;font-weight:bold;background:#111;color:white;border:2px solid #00ffff;border-radius:10px;cursor:pointer;">Enter</button>
+  <div id="startOverlay">
+    <h1>Click Anywhere to Enter</h1>
   </div>
 
   <div class="intro-container" id="intro"></div>
@@ -104,10 +145,10 @@
     <a href="https://pastebin.com/raw/eaqVfG8a" target="_blank">
       <button class="button">Bootstrapper TAXUS</button>
     </a>
-        <a href="Expose.html" target="_blank">
+    <a href="Expose.html" target="_blank">
       <button class="button">Exposed Taha</button>
     </a>
-  </div
+  </div>
 
   <!-- Audio -->
   <audio id="sound1" src="Sega.mp3"></audio>
@@ -116,14 +157,6 @@
   <script>
     const imageUrls = [
       "https://media.wired.com/photos/64e8dfe4cedb032afb4ceccd/master/pass/Donald-Trump-Mugshot-Depth-Of-Field-Culture-1621335357.jpg",
-      "https://media.wired.com/photos/64e8dfe4cedb032afb4ceccd/master/pass/Donald-Trump-Mugshot-Depth-Of-Field-Culture-1621335357.jpg",
-      "https://media.wired.com/photos/64e8dfe4cedb032afb4ceccd/master/pass/Donald-Trump-Mugshot-Depth-Of-Field-Culture-1621335357.jpg",
-      "https://media.wired.com/photos/64e8dfe4cedb032afb4ceccd/master/pass/Donald-Trump-Mugshot-Depth-Of-Field-Culture-1621335357.jpg",
-      "https://media.wired.com/photos/64e8dfe4cedb032afb4ceccd/master/pass/Donald-Trump-Mugshot-Depth-Of-Field-Culture-1621335357.jpg",
-      "https://media.wired.com/photos/64e8dfe4cedb032afb4ceccd/master/pass/Donald-Trump-Mugshot-Depth-Of-Field-Culture-1621335357.jpg",
-      "https://mygruds.netlify.app/static/media/trump.a99960a0.png",
-      "https://mygruds.netlify.app/static/media/trump.a99960a0.png",
-      "https://mygruds.netlify.app/static/media/trump.a99960a0.png",
       "https://mygruds.netlify.app/static/media/trump.a99960a0.png"
     ];
 
@@ -132,21 +165,29 @@
     const sound1 = document.getElementById("sound1");
     const sound2 = document.getElementById("sound2");
 
+    document.getElementById("startOverlay").addEventListener("click", () => {
+      document.getElementById("startOverlay").style.opacity = "0";
+      setTimeout(() => {
+        document.getElementById("startOverlay").style.display = "none";
+        startIntro();
+      }, 1000);
+    });
+
     function startIntro() {
-      document.getElementById("startOverlay").style.display = "none";
-
       imageUrls.forEach((url, index) => {
-        const img = document.createElement("img");
-        img.src = url;
-        img.className = "meme-image";
-        img.style.top = `${Math.random() * 100}%`;
-        img.style.left = `${Math.random() * 100}%`;
-        intro.appendChild(img);
+        for (let i = 0; i < 5; i++) {
+          const img = document.createElement("img");
+          img.src = url;
+          img.className = "meme-image";
+          img.style.top = `${Math.random() * 100}%`;
+          img.style.left = `${Math.random() * 100}%`;
+          intro.appendChild(img);
 
-        setTimeout(() => {
-          img.style.opacity = 1;
-          img.style.transform = `translate(${(Math.random() - 0.5) * 500}px, ${(Math.random() - 0.5) * 500}px) scale(1.5)`;
-        }, 100 + index * 200);
+          setTimeout(() => {
+            img.style.opacity = 1;
+            img.style.transform = `translate(${(Math.random() - 0.5) * 500}px, ${(Math.random() - 0.5) * 500}px) scale(1.5)`;
+          }, 100 + index * 300 + i * 100);
+        }
       });
 
       const trumpImg = document.createElement("img");
@@ -157,7 +198,7 @@
 
       setTimeout(() => {
         trumpImg.classList.add("zoomed");
-      }, 2500);
+      }, 3000);
 
       setTimeout(() => {
         intro.classList.add("fade-out");
@@ -167,7 +208,7 @@
           intro.style.display = "none";
           main.style.display = "flex";
         }, 2000);
-      }, 5000);
+      }, 6000);
 
       sound1.addEventListener("ended", () => {
         sound2.play();
