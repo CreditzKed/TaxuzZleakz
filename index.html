@@ -1,4 +1,4 @@
-Yo add a little white glowing text under here <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -124,6 +124,17 @@ Yo add a little white glowing text under here <!DOCTYPE html>
       color: white;
       box-shadow: 0 0 30px white;
     }
+
+    .credit-text {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1rem;
+      text-shadow: 0 0 10px white;
+      z-index: 10001;
+    }
   </style>
 </head>
 <body>
@@ -150,9 +161,11 @@ Yo add a little white glowing text under here <!DOCTYPE html>
     </a>
   </div>
 
+  <div class="credit-text">Made by creditz Discord.gg/realczk</div>
+
   <!-- Audio -->
   <audio id="sound1" src="Sega.mp3"></audio>
-  <audio id="sound2" src="Again2.mp3"></audio>
+  <audio id="sound2" src="Again3.mp3"></audio>
 
   <script>
     const imageUrls = [
@@ -216,4 +229,4 @@ Yo add a little white glowing text under here <!DOCTYPE html>
     }
   </script>
 </body>
-</html> saying Made by creditz Discord.gg/realczk
+</html>
